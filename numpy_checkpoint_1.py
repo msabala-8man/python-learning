@@ -49,3 +49,25 @@ print(sum(data[:, 2] >= 800))
 #     where quantity is greater than 5.
 filtered_13 = data[data[:, 1] > 5]
 print(np.mean(filtered_13[:, 0]))
+# 14. Calculate the maximum revenue for rows
+#     where discount is greater than 0.10.
+filtered_14 = data[data[:, 3] > 0.1]
+print(np.max(filtered_14[:, 2]))
+# 15. Calculate the standard deviation of revenue
+#     for rows where quantity is greater than 3.
+filtered_15 = data[data[:, 1] > 3]
+print(np.std(filtered_15[:, 2]))
+# 16. Calculate the average of ALL values
+#     in rows where revenue is greater than 800.
+filtered_16 = data[data[:, 2] > 800]
+print(np.mean(filtered_16))
+# 17. Add 10 to every price.
+changed_17 = data[:, 0]
+print(changed_17 + 10)
+# 18. Multiply every revenue by 1.05.
+changed_18 = data[:, 2]
+print(changed_18 * 1.05)
+# 19. Calculate the difference between
+#     the maximum and minimum value
+#     for each column.
+print(np.max(data, axis=0) - np.min(data, axis=0))
