@@ -105,3 +105,70 @@ print(arr2[-3:4:-2])
 # taking every third element.
 
 print(arr2[13:2:-3])
+
+
+import numpy as np
+
+arr3 = np.array([
+    10, 20, 30, 40, 50,
+    60, 70, 80, 90, 100,
+    110, 120, 130, 140, 150,
+    160, 170, 180, 190, 200
+])
+
+matrix3 = np.array([
+    [10,  20,  30,  40,  50,  60,  70,  80],
+    [90,  100, 110, 120, 130, 140, 150, 160],
+    [170, 180, 190, 200, 210, 220, 230, 240],
+    [250, 260, 270, 280, 290, 300, 310, 320],
+    [330, 340, 350, 360, 370, 380, 390, 400],
+    [410, 420, 430, 440, 450, 460, 470, 480]
+])
+
+
+# EXERCISE 1/5:
+#
+# Print every second element of arr,
+# starting from the third element
+# and moving forward.
+
+print(arr3[2::2])
+
+
+# EXERCISE 2/5:
+#
+# Print the last 10 elements of arr
+# in reverse order,
+# taking every second element.
+
+print(arr3[-1:-11:-2])
+
+# EXERCISE 3/5:
+#
+# Print elements from index 16
+# down to, but not including, index 4,
+# moving backwards by 3.
+
+print(arr3[16:4:-3])
+
+# EXERCISE 4/5:
+#
+# From matrix, select:
+# - rows from index 1 up to, but not including, index 6
+# - columns from index 2 up to, but not including, index 7
+# - then take every second column.
+
+print(matrix3[1:6, 2:7:2])
+
+# EXERCISE 5/5:
+#
+# From matrix, print:
+# - every second row, starting from the last row
+#   and moving upwards
+# - every second column, starting from the last column
+#   and moving left.
+
+print(matrix3[-1::-2, -1::-2])
+#
+# Both dimensions should be sliced
+# from the end.
