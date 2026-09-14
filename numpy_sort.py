@@ -144,3 +144,99 @@ largest_value_arr_7 = arr_7[largest_index_arr_7]
 print(smallest_value_arr_7, smallest_index_arr_7)
 print(largest_value_arr_7, largest_index_arr_7)
 
+##############################################################################################
+
+import numpy as np
+
+
+# EXERCISE 11:
+# Generate an array of 15 random integers from 10 to 100.
+#
+# 1. Print the original array.
+# 2. Print the array sorted in ascending order.
+# 3. Print the array sorted in descending order.
+# 4. Print the original array again to verify that it has not changed.
+# 5. Print the mean of the original array.
+
+arr_11 = np.array(np.random.randint(10, 101, 15))
+print(arr_11)
+print(np.sort(arr_11))
+print(np.sort(arr_11)[::-1])
+print(arr_11)
+print(np.mean(arr_11))
+
+# EXERCISE 12:
+# Generate a 4 x 6 array of random integers from 1 to 50.
+#
+# 1. Print the original array.
+# 2. Sort each row in ascending order.
+# 3. Sort each column in ascending order.
+# 4. Print both resulting arrays.
+# 5. Calculate and print the maximum value from each row of the original array.
+
+arr_12 = np.array(np.random.randint(1, 51, (4, 6)))
+print(arr_12)
+print(np.sort(arr_12, axis=1))
+print(np.sort(arr_12, axis=0))
+print(np.max(arr_12, axis=1))
+
+# EXERCISE 13:
+# Generate an array of 12 random integers from 20 to 200.
+#
+# 1. Get the indices that would sort the array in ascending order.
+# 2. Use those indices to create a sorted version of the original array.
+# 3. Use the sorting indices to identify the original index of the smallest value.
+# 4. Use the sorting indices to identify the original index of the largest value.
+# 5. Print the smallest value, its original index, the largest value, and its original index.
+
+arr_13 = np.array(np.random.randint(20, 201, 12))
+print(arr_13)
+arr_13_argsort = np.argsort(arr_13)
+print(arr_13_argsort)
+arr_13_order = arr_13[arr_13_argsort]
+print(arr_13_order)
+smallest_value_index_arr13 = arr_13_argsort[0]
+smallest_value_arr13 = arr_13[arr_13_argsort[0]]
+print(smallest_value_index_arr13, smallest_value_arr13)
+largest_value_index_arr_13 = arr_13_argsort[-1]
+largest_value_arr_13 = arr_13[arr_13_argsort[-1]]
+print(largest_value_index_arr_13, largest_value_arr_13)
+
+# EXERCISE 14:
+# Generate an array of 20 random values from a standard normal distribution.
+#
+# 1. Print the original array.
+# 2. Count how many values are greater than 1.
+# 3. Count how many values are below -1.
+# 4. Sort the array in ascending order.
+# 5. Print the three smallest values and the three largest values.
+
+arr_14 = np.array(np.random.randn(20))
+print(arr_14)
+print(np.sum(arr_14 > 1))
+print(np.sum(arr_14 < -1))
+print(np.sort(arr_14))
+arr_14_argsort = np.argsort(arr_14)
+print(arr_14[arr_14_argsort[:3]])   
+print(arr_14[arr_14_argsort[-1:-4:-1]])
+
+
+# EXERCISE 15:
+# Generate a 5 x 5 array of random integers from 10 to 100.
+#
+# 1. Print the original array.
+# 2. Get the sorting indices for each row in ascending order.
+# 3. For each row, identify the index of the smallest value.
+# 4. For each row, identify the index of the largest value.
+# 5. Print the sorting indices.
+# 6. Print the indices of the smallest values for all rows.
+# 7. Print the indices of the largest values for all rows.
+# 8. Calculate and print the mean of the original array.
+
+arr_15 = np.array(np.random.randint(10, 101, (5, 5)))
+print(arr_15)
+arr_15_argsort = np.argsort(arr_15, axis=1)
+print(arr_15_argsort)
+print(arr_15_argsort[:, [0]])
+print(arr_15_argsort[:, [-1]])
+print(np.mean(arr_15))
