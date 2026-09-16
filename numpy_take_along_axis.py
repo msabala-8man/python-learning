@@ -106,3 +106,105 @@ arr_5 = np.array([[45, 12, 78, 34],
 arr_5_argsort = np.argsort(arr_5, axis=1)
 print(arr_5_argsort)
 print(np.take_along_axis(arr_5, arr_5_argsort, axis=1))
+
+###########################################################################
+
+import numpy as np
+
+
+# EXERCISE 6:
+# Create a 4x6 array of random integers from 10 to 50.
+#
+# Select rows 2 through 4 and columns 2 through 5.
+#
+# Print the selected part of the array.
+
+arr_6 = np.random.randint(10, 51, (4, 6))
+print(arr_6)
+arr_6_modified = arr_6[1:4:, 1:5:]
+print(arr_6_modified)
+
+# EXERCISE 7:
+# Create a 3x5 array of random integers from 1 to 100.
+#
+# Select every second column, starting from the first column.
+#
+# Then reverse the order of the selected columns.
+#
+# Print the final array.
+
+arr_7 = np.random.randint(1, 101, (3, 5))
+print(arr_7)
+arr_7_modified = arr_7[::, 0::2]
+print(arr_7_modified)
+arr_7_modified_reverse = arr_7_modified[::, -1::-1]
+print(arr_7_modified_reverse)
+
+# EXERCISE 8:
+# Create the following array:
+#
+# [[15, 40, 25, 60],
+#  [80, 30, 50, 10],
+#  [45, 70, 20, 90]]
+#
+# Create an index array that rearranges the columns of each row
+# in the following order:
+#
+# third column, first column, fourth column, second column
+#
+# Use np.take_along_axis() to create the new array.
+#
+# Print the result.
+
+arr_8 = np.array([[15, 40, 25, 60],
+                  [80, 30, 50, 10],
+                  [45, 70, 20, 90]])
+print(arr_8)
+arr_8_index = np.array([[2, 0, 3, 1],
+                        [2, 0, 3, 1],
+                        [2, 0, 3, 1]])
+print(arr_8_index)
+arr_8_take_along_axis = np.take_along_axis(arr_8, arr_8_index, axis=1)
+print(arr_8_take_along_axis) 
+
+# EXERCISE 9:
+# Create a 5x5 array of random integers from 1 to 100.
+#
+# Select the last three rows.
+#
+# From this new array, select the first, third and fifth columns.
+#
+# Then reverse the order of the columns.
+#
+# Print the final array.
+
+arr_9 = np.random.randint(1, 101, (5, 5))
+print(arr_9)
+arr_9_modified_1 = arr_9[-3::, ::]
+print(arr_9_modified_1)
+arr_9_modified_2 = arr_9_modified_1[::, [0, 2, 4]]
+print(arr_9_modified_2)
+arr_9_modified_2_reverse = arr_9_modified_2[::, -1::-1]
+print(arr_9_modified_2_reverse)
+
+# EXERCISE 10:
+# Create a 4x6 array of random integers from 1 to 100.
+#
+# First select rows 1 through 4 and every second column,
+# starting from the second column.
+#
+# Then create an index array using np.argsort()
+# that sorts each row of this new array in ascending order.
+#
+# Use np.take_along_axis() to create a sorted version of the new array.
+#
+# Print the index array and the final sorted array.
+
+arr_10 = np.random.randint(1, 101, (4, 6))
+print(arr_10)
+arr_10_modified_1 = arr_10[0:4:, 1::2]
+print(arr_10_modified_1)
+arr_10_argsort = np.argsort(arr_10_modified_1, axis=1)
+print(arr_10_argsort)
+arr_10_take_along_axis = np.take_along_axis(arr_10_modified_1, arr_10_argsort, axis=1)
+print(arr_10_take_along_axis)
