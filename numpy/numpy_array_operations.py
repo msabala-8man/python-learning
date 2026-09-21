@@ -1,4 +1,6 @@
 import numpy as np
+
+np.set_printoptions(suppress=True)
 # 
 # EXERCISE 1/5:
 #
@@ -165,3 +167,157 @@ arr_10_split = np.split(arr_10_flatten, 3)
 print(arr_10_split[0], arr_10_split[1], arr_10_split[2])
 
 # Print the final three parts separately.
+
+##########################################################################
+
+# EXERCISE 11
+#
+# Create a 1D NumPy array containing:
+# [120, 250, 180, 300, 90, 420]
+#
+# 1. Convert it into a 2D array with 2 rows and 3 columns.
+# 2. Convert the original 1D array into a column.
+# 3. Convert the original 1D array into a row.
+# 4. Print all three arrays and their shapes.
+
+arr_11 = np.array([120, 250, 180, 300, 90, 420])
+print(arr_11)
+arr_11_reshape = arr_11.reshape(2, 3)
+print(arr_11_reshape, arr_11_reshape.shape)
+arr_11_column = arr_11[:, np.newaxis]
+print(arr_11_column, arr_11_column.shape)
+arr_11_row = arr_11[np.newaxis, :]
+print(arr_11_row, arr_11_row.shape)
+
+# EXERCISE 12
+#
+# Create the following two arrays:
+#
+# prices = [100, 200, 150, 300]
+# quantities = [2, 3, 4, 1]
+#
+# 1. Combine them into one 2D array where:
+#    - first column = prices
+#    - second column = quantities
+# 2. Create a third column containing the transaction value
+#    (price multiplied by quantity).
+# 3. Add this third column to your 2D array.
+# 4. Print the final array and its shape.
+#
+# The final array should have 3 columns.
+
+prices = np.array([100, 200, 150, 300])
+print(prices)
+quantities = np.array([2, 3, 4, 1])
+print(quantities)
+arr_12 = np.column_stack((prices, quantities))
+print(arr_12, arr_12.shape)
+transaction_value = prices * quantities
+print(transaction_value, transaction_value.shape)
+transaction_value_column = transaction_value[:, np.newaxis]
+print(transaction_value_column, transaction_value_column.shape)
+arr_12_column_added = np.column_stack((arr_12, transaction_value_column)) 
+print(arr_12_column_added, arr_12_column_added.shape)
+
+# EXERCISE 13
+#
+# Create the following 4x4 array:
+#
+# data = np.array([
+#     [10, 20, 30, 40],
+#     [50, 60, 70, 80],
+#     [90, 100, 110, 120],
+#     [130, 140, 150, 160]
+# ])
+#
+# 1. Split the array into two arrays with the same number of rows.
+# 2. Print both resulting arrays.
+# 3. Reverse the order of the columns in the second array.
+# 4. Print the final second array.
+
+data = np.array([
+[10, 20, 30, 40],
+[50, 60, 70, 80],
+[90, 100, 110, 120],
+[130, 140, 150, 160]])
+print(data)
+data_split = np.split(data, 2)
+data_split_2_arr_reverse = np.flip(data_split[1], axis=1)
+print(data_split_2_arr_reverse)
+
+# EXERCISE 14
+#
+# Create:
+#
+# sales = np.array([
+#     [120, 5],
+#     [250, 3],
+#     [180, 4],
+#     [300, 2],
+#     [90,  8]
+# ])
+#
+# 1. Create a new 1D array containing:
+#    [0.10, 0.15, 0.05, 0.20, 0.10]
+#
+# 2. Add this array to sales as a third column.
+# 3. Then create a fourth column containing:
+#    Quantity * (1 + Discount)
+#
+# 4. Add the fourth column to the array.
+# 5. Print the final array and its shape.
+
+sales = np.array([
+[120, 5],
+[250, 3],
+[180, 4],
+[300, 2],
+[90,  8]])
+print(sales)
+arr_14 = np.array([0.10, 0.15, 0.05, 0.20, 0.10])
+arr_14_column_added = np.column_stack((sales, arr_14))
+print(arr_14_column_added, arr_14_column_added.shape)
+arr_14_4_column = arr_14_column_added[::, 1:2:] * (1 + arr_14_column_added[::, -1::])
+print(arr_14_4_column, arr_14_4_column.shape)
+arr_14_4_column_added = np.column_stack((arr_14_column_added, arr_14_4_column))
+print(arr_14_4_column_added, arr_14_4_column_added.shape)
+
+# EXERCISE 15
+#
+# Create the following array:
+#
+# data = np.array([
+#     [15, 25, 35],
+#     [45, 55, 65],
+#     [75, 85, 95]
+# ])
+#
+# 1. Add a new row:
+#    [105, 115, 125]
+#
+# 2. Add a new column:
+#    [135, 145, 155, 165]
+#
+# 3. Delete the second row from the resulting array.
+# 4. Reverse the order of the columns.
+# 5. Print the final array and its shape.
+
+data = np.array([
+[15, 25, 35],
+[45, 55, 65],
+[75, 85, 95]])
+print(data)
+#funkcja row_stack mi nie działa
+arr_15_row = np.array([105, 115, 125])
+arr_15_row_2d = arr_15_row[np.newaxis, :]
+print(arr_15_row_2d, arr_15_row_2d.shape)
+arr_15_column = np.array([135, 145, 155, 165])
+print(arr_15_column, arr_15_column.shape)
+arr_15_row_added = np.concatenate((data, arr_15_row_2d), axis=0)
+print(arr_15_row_added, arr_15_row_added.shape)
+arr_15_row_added_column_added = np.column_stack((arr_15_row_added, arr_15_column))
+print(arr_15_row_added_column_added, arr_15_row_added_column_added.shape)
+arr_15_row_added_column_added_substracted = np.delete(arr_15_row_added_column_added, 1, axis=0)
+print(arr_15_row_added_column_added_substracted, arr_15_row_added_column_added_substracted.shape)
+arr_15_row_added_column_added_substracted_reversed = np.flip(arr_15_row_added_column_added_substracted, axis=1)
+print(arr_15_row_added_column_added_substracted_reversed, arr_15_row_added_column_added_substracted_reversed.shape)
