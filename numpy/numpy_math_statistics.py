@@ -128,6 +128,34 @@ print(scores_rep_70)
 # 8. Calculate the average of all values in these final two rows.
 # 9. Print the intermediate arrays and final results.
 
+sales = np.array([
+    [120, 150, 180, 200, 220, 250],
+    [90,  130, 170, 160, 180, 210],
+    [200, 220, 190, 250, 270, 300],
+    [80,  110, 140, 130, 150, 170],
+    [150, 180, 210, 230, 240, 260]
+])
+
+sales_modif = sales[1:6:, :]
+print('lol',sales_modif)
+sales_modif_2 = sales_modif[:, ::2]
+print(sales_modif_2)
+sales_modif_2_row_tot = np.sum(sales_modif_2, axis=1)
+print(sales_modif_2_row_tot)
+sales_modif_2_row_tot_argmax = np.argmax(sales_modif_2_row_tot)
+print(sales_modif_2_row_tot_argmax)
+print(sales_modif_2[sales_modif_2_row_tot_argmax])
+sales_modif_2_row_tot_argmin = np.argmin(sales_modif_2_row_tot)
+print(sales_modif_2_row_tot_argmin)
+print(sales_modif_2[sales_modif_2_row_tot_argmin])
+sales_modif_2_argsort = np.argsort(sales_modif_2_row_tot)
+print(sales_modif_2_argsort)
+sales_modif_2_tot_sort = sales_modif_2[sales_modif_2_argsort]
+print(sales_modif_2)
+print(sales_modif_2_tot_sort)
+sales_modif_2_tot_sort_modfif = sales_modif_2_tot_sort[-2:, :]
+print(sales_modif_2_tot_sort_modfif)
+print(np.mean(sales_modif_2_tot_sort_modfif))
 
 # EXERCISE 4
 # Create the following 2D NumPy array:
@@ -151,6 +179,26 @@ print(scores_rep_70)
 # 8. Print the modified array, row means, highest-mean row index,
 #    and cumulative sums.
 
+data = np.array([
+    [45, 12, 78, 34, 91, 56],
+    [23, 67, 89, 15, 42, 73],
+    [81, 29, 54, 96, 38, 62],
+    [17, 85, 31, 70, 49, 88],
+    [64, 21, 93, 46, 75, 19]
+])
+
+#rows 1-5 to wszystkie wiersze tablicy
+data_rows_rev = data[-1::-1, :]
+print(data_rows_rev)
+data_rows_rev_col_rev = data_rows_rev[:, -1:0:-1]
+print(data_rows_rev_col_rev)
+data_rows_rev_col_rev_mod = np.where(data_rows_rev_col_rev > 80, 100, data_rows_rev_col_rev)
+data_rows_rev_col_rev_mod_2 = np.where(data_rows_rev_col_rev_mod < 30, 0, data_rows_rev_col_rev_mod)
+print(data_rows_rev_col_rev_mod_2)
+data_rows_rev_col_rev_mod_2_mean = np.mean(data_rows_rev_col_rev_mod_2, axis=1)
+data_rows_rev_col_rev_mod_2_mean_argmax = np.argmax(data_rows_rev_col_rev_mod_2_mean)
+print(data_rows_rev_col_rev_mod_2_mean_argmax)
+print(np.cumsum(data_rows_rev_col_rev_mod_2, axis=1))
 
 # EXERCISE 5
 # Create a NumPy array containing:
@@ -168,3 +216,16 @@ print(scores_rep_70)
 # 7. Sort the modified array in descending order.
 # 8. Calculate the cumulative sum of the sorted array.
 # 9. Print all important intermediate and final results.
+
+arr = np.array([ 15, 42, 8, 73, 31, 56, 91, 24, 67, 38, 85, 19])
+arr_2 = arr[::2]
+print(arr_2)
+arr_3 = arr_2[arr_2 > 30]
+print(arr_3)
+print(np.mean(arr_3), np.std(arr_3))
+print(np.argmin(arr_3), np.argmax(arr_3))
+arr_4 = np.where(arr_3 > 70, 70, np.where(arr_3 < 40, 40, arr_3))
+print(arr_4)
+arr_4_sort_desc = np.sort(arr_4)[-1::-1]
+print(arr_4_sort_desc)
+print(np.cumsum(arr_4_sort_desc))
